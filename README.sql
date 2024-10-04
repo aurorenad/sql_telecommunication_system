@@ -103,7 +103,7 @@ WHERE CustomerID IN (
 WHERE Monthlyfee > (SELECT AVG(Monthlyfee) FROM Plans)
   );
 
-Conceptual, Logical and Physical Data Mode
+
 
 
 

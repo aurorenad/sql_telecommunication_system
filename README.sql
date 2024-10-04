@@ -74,8 +74,9 @@ VALUES(4, 4, 2, to_date( '2024-10-01', 'yyyy-mm-dd'), to_date( '2024-11-01', 'yy
 
 Updating
   -------------
-UPDATE Customers SET Email = 'anadine@gmail.com'
-WHERE CustomerID = 3;
+UPDATE Plans 
+SET Monthlyfee=300
+WHERE PlanID = 2;
 
 Deleting 
   -------------
@@ -84,19 +85,25 @@ WHERE CustomerID = 1;
 
 joining
   -------------
-SELECT c.Name, p.PlanName, s.StartDate 
-FROM Customers c
-JOIN Subscriptions s ON c.CustomerID = s.CustomerID
-JOIN Plans p ON s.PlanID = p.PlanID;
+SELECT 
+  s.SubscriptionID,
+  p.Monthlyfee
+FROM
+  Subscriptions  s
+Left JOIN 
+  Plans p ON s.PlanID = p.PlanID;
 
 Retrieve
   -----------
-SELECT Name FROM Customers 
+SELECT Name 
+  FROM Customers 
 WHERE CustomerID IN (
-    SELECT CustomerID FROM Plan
+    SELECT CustomerID 
+  FROM Plan
 WHERE Monthlyfee > (SELECT AVG(Monthlyfee) FROM Plans)
   );
 
+Conceptual, Logical and Physical Data Mode
 
 
 

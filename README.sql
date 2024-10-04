@@ -14,9 +14,8 @@ CREATE TABLE Customers (
   ---------------------------------
 CREATE TABLE Plans (
     PlanID INT PRIMARY KEY,
-    PlanName VARCHAR(100) NOT NULL,
-    MonthlyCost DECIMAL(10, 2) NOT NULL,
-    DataLimit VARCHAR(50) NOT NULL
+    PlanName VARCHAR(100) NOT NULL, 
+    Monthlyfee DECIMAL(10, 2) NOT NULL
 );
 
  Creating the Subscriptions table
@@ -47,17 +46,17 @@ values (4,'Nooella','dnoella','98756');
 
 Inserting data into Plans table
   --------------------------------
-INSERT INTO Plans (PlanID, PlanName, MonthlyCost, DataLimit) 
-values (1, 'Basic', 200, '5GB');
+INSERT INTO Plans (PlanID, PlanName, Plantype, Monthlyfee) 
+values (1, 'Basic', 200);
 
-INSERT INTO Plans (PlanID, PlanName, MonthlyCost, DataLimit) 
-values(2, 'Premium', 500, '10GB');
+INSERT INTO Plans (PlanID, PlanName, Plantype,Monthlyfee) 
+values(2, 'Premium', 500);
 
-INSERT INTO Plans (PlanID, PlanName, MonthlyCost, DataLimit) 
-values(3, 'Classic', 600, '20GB');
+INSERT INTO Plans (PlanID, PlanName, Plantype, Monthlyfee) 
+values(3, 'Classic', 600);
 
-INSERT INTO Plans (PlanID, PlanName, MonthlyCost, DataLimit) 
-values(4, 'Unique', 800, '40GB');
+INSERT INTO Plans (PlanID, PlanName, Plantype, Monthlyfee) 
+values(4, 'Unique', 800);
 
 Inserting data into Subscriptions table
   ----------------------------------------------
@@ -95,7 +94,7 @@ Retrieve
 SELECT Name FROM Customers 
 WHERE CustomerID IN (
     SELECT CustomerID FROM Plan
-WHERE MonthlyCost > (SELECT AVG(Monthlycost) FROM Plans)
+WHERE Monthlyfee > (SELECT AVG(Monthlyfee) FROM Plans)
   );
 
 
